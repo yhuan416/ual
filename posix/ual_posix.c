@@ -14,6 +14,9 @@ int ual_wdt_start_wrapper(int timeout);
 void ual_wdt_stop_wrapper(void);
 void ual_wdt_reset_wrapper(int timeout);
 
+void *ual_task_create_wrapper(taskFunc func, void *arg, taskAttr *attr);
+void ual_task_join_wrapper(void *task);
+
 ual_t ual_func_table = {
     .ual_malloc = ual_malloc_wrapper,
     .ual_free = ual_free_wrapper,
@@ -28,4 +31,7 @@ ual_t ual_func_table = {
     .ual_wdt_reset = ual_wdt_reset_wrapper,
     .ual_wdt_start = ual_wdt_start_wrapper,
     .ual_wdt_stop = ual_wdt_stop_wrapper,
+
+    .ual_task_create = ual_task_create_wrapper,
+    .ual_task_join = ual_task_join_wrapper,
 };
